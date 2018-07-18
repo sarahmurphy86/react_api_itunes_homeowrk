@@ -11,18 +11,18 @@ class MusicBox extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
+    // console.log('componentDidMount');
   const url = 'https://itunes.apple.com/gb/rss/topsongs/limit=20/json';
 
   fetch(url)
     .then(response => response.json() )
-    .then(musicData => this.setState({songs: musicData.feed.entry}))
+    .then(songs => this.setState({songs: songs.feed.entry}))
     .catch(err => console.log(err));
   }
 
   render() {
     return (
-      <div className="MusicBox">
+      <div>
         <h2>Chart Top 20</h2>
         <MusicList data={this.state.songs}/>
       </div>
